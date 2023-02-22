@@ -1,0 +1,89 @@
+Body {
+	font-family: Calibri, Helvetica, sans-serif;
+	background: url("residential_property.jpeg") rgba(0, 31, 91, 0.75);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-blend-mode: multiply;
+}  
+
+/* Logo */
+.logo {
+	height:  60px;
+    width: 140px;
+}
+
+/* Form and input containers */
+.formContainer {
+	width: 100%;
+}
+.container {   
+    padding: 40px;   
+    width:  30%;
+    background-color: white; 
+    box-shadow: 0 0 30px 2px #011743;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto; 
+    margin-top: 50px;
+    margin-bottom: 50px;
+}   
+
+/* Login button and hover */
+button {   
+	background-color: #001F5B;   
+    width: 30%; 
+    color: whitesmoke;   
+    padding: 15px;   
+    margin: 10px 0px;   
+    border: none;   
+    cursor: pointer;
+    margin-left: 70%;
+} 
+button:hover {
+ 	background-color: #011743;   
+}  
+ 
+/* Username and password input */
+input[type=text], input[type=password] {   
+	width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    box-sizing: border-box;   
+    background-color: whitesmoke;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+}  
+input:hover{
+    border-width: 0 0 2px;
+    border-color: #001F5B;
+}
+input:focus {
+    border-width: 0 0 2px;
+    border-color: #001F5B;
+}
+
+/* Forgot password link */
+.forgotPassword {
+    padding: 0px;   
+    width:  100%;
+    background-color: white;
+    font-size: 14px;
+    color: #001F5B;
+}
+
+/* Text styling */
+.header {
+	font-size: 25px;
+}
+
+.inputFieldLabel {
+	font-size: 15px;
+}
+
+   
+      
+
+
+
+
