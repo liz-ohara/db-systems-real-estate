@@ -1,6 +1,6 @@
 Body {
 	font-family: Calibri, Helvetica, sans-serif;
-	background: url("creative/residential_property.jpeg") rgba(0, 31, 91, 0.75);
+	background: url("residential_property.jpeg") rgba(0, 31, 91, 0.75);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
@@ -18,34 +18,71 @@ Body {
 }
 .container {   
     padding: 40px;   
-    width:  30%;
+    width:  35%;
     background-color: white; 
     box-shadow: 0 0 30px 2px #011743;
     border-radius: 5px;
     margin-left: auto;
     margin-right: auto; 
     margin-top: 50px;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
 }   
 
 /* Login button and hover */
 button {   
 	background-color: #001F5B;   
+    width: 30%; 
     color: whitesmoke;   
+    padding: 15px;   
+    margin: 10px 0px;   
     border: none;   
     cursor: pointer;
-    padding: 12px 16px; 
-    
-    display: flex;
-    margin-left: auto;
+    margin-left: 70%;
 } 
 button:hover {
  	background-color: #011743;   
 }  
  
-/* Username and password input */
-input[type=text], input[type=password] {   
+/* First and last name input */
+.radio {
+    padding-right: 30px;
+}
+.radioButtons{
+    display: flex;
+}
+.firstAndLast{
+    display: flex;
+}
+.emailAndPhone{
+    display: flex;
+}
+input[type=last] {   
+    margin-left: 20px !important;
+} 
+input[type=phone] {   
+    margin-left: 0px !important;
+} 
+input[type=first], input[type=last] {   
+	width: 50%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    box-sizing: border-box;   
+    background-color: whitesmoke;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+}  
+input[type=username], input[type=password] {   
 	width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    box-sizing: border-box;   
+    background-color: whitesmoke;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+}  
+input[type=email], input[type=phone] {   
+	width: 50%;   
     margin: 8px 0;  
     padding: 12px 20px;   
     display: inline-block;   
@@ -64,7 +101,7 @@ input:focus {
 }
 
 /* Forgot password link */
-.forgotPassword {
+.createProfessionalAccount {
     padding: 0px;   
     width:  100%;
     background-color: white;
@@ -80,19 +117,6 @@ input:focus {
 .inputFieldLabel {
 	font-size: 15px;
 }
-
-
-.container2 {   
-    padding: 5px;   
-    width: 31.5%;
-    height: 20%;
-    background-color: whitesmoke; 
-    /* box-shadow: 0 0 30px 2px #011743; */
-    border-radius: 5px;
-    border: 2px solid lightgray;
-    margin-left: auto;
-    margin-right: auto; 
-} 
 
    
       
