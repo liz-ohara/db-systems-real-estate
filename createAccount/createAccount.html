@@ -1,0 +1,224 @@
+<?php include_once '../includes/databaseConnection.php';
+
+      if(isset($_POST['submit']))
+      {		
+          $firstName = $_POST['firstName'];
+          $lastName = $_POST['lastName'];
+          $username = $_POST['username'];
+          $pswd1 = $_POST['pswd1'];
+          $pswd2 = $_POST['pswd2'];
+          $email = $_POST['email'];
+          $phonenum = $_POST[phonenum];
+
+          $insert = oci_parse($db,"INSERT INTO BUYER VALUES ('$firstName','$lastName', '$username', '$pswd1', '$pswd2', '$email', $phonenum)");
+
+          if(!$insert)
+          {
+              echo mysqli_error();
+          }
+          else
+          {
+              echo "Records added successfully.";
+          }
+      }
+
+      oci_close($db); // Close connection
+  
+  
+  
+  
+  
+  ?>
+
+<!DOCTYPE html>   
+<html>   
+<head>  
+<meta name="viewport" content="width=device-width, initial-scale=1">  
+<link rel="stylesheet" href="createAccount.css">
+<link rel="javascript" href="createAccount.js">
+
+<title> Account Creation </title>  
+<style>   
+
+</style>   
+
+<script>
+
+  
+
+  function showToast(message){
+    var toast = document.getElementById('toast');
+    toast.querySelector('.toast-body').innerHTML = message; 
+    toast.classList.add('visible');
+    setTimeout(function () {toast.classList.add('hidden');}, 4000);
+    toast.classList.remove('hidden');
+  }
+
+  var userAccountType="";
+  function userType(type) {
+    if(type == 1){
+      userAccountType = 'buyer';
+    }
+    else{
+      userAccountType = 'agent';
+    }
+  }
+
+  function validateForm() {
+
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var username = document.getElementById("usrname").value; 
+    var pw1 = document.getElementById("pswd1").value; 
+    var pw2 = document.getElementById("pswd2").value;
+    var email = document.getElementById("email").value;  
+    var pnum = document.getElementById("phonenum").value; 
+        
+    if(fname == "") {  
+      showToast("Please fill out first name.");
+      return false;  
+    }  
+    if(lname == "") {  
+      showToast("Please fill out last name.");
+      return false;  
+    }  
+    if(username == "") {  
+      showToast("Please fill out username.");
+      return false;   
+    }  
+
+    // CREATE AN IF STATEMENT TO SAY THAT USERNAME HAS ALREADY BEEN TAKEN
+
+    if(pw1 == "") {  
+      showToast("Please create a password.");
+      return false;  
+    } 
+
+    var lowerCaseLetters = /[a-z]/g;
+    var upperCaseLetters = /[A-Z]/g;
+    var numbers = /[0-9]/g;
+
+    if(!(pw1.match(lowerCaseLetters) && pw1.match(upperCaseLetters) && pw1.match(numbers) && (pw1.length >= 8))){
+      showToast("Password should contain 8 characters with at least 1 uppercase and 1 number.");
+      return false; 
+    }
+    if(pw2 == "") {  
+      showToast("Please confirm your password.");
+      return false;  
+    } 
+    if(pw1 != pw2) {
+      showToast("Passwords do not match.");
+      return false;  
+    }
+    if(email == "") {  
+      showToast("Please enter your email.");
+      return false;   
+    } 
+    if(pnum == "") {  
+      showToast("Please enter your phone number.");
+      return false;   
+    } 
+    if(isNaN(pnum)){
+      showToast("Phone number should contain digits only.");
+      return false; 
+    }
+    if(pnum.length < 10 || pnum.length > 10){
+      showToast("Phone number should be 10 digits long.");
+      return false; 
+    }
+    if(userAccountType == ""){
+      showToast("Please select a user type.");
+      return false; 
+    }
+
+    console.log("Form is validated.")
+    localStorage.setItem(fname, lname, username, pw1, pw2, email, pnum);
+    console.log(fname, lname, username, pw1, pw2, email, pnum);
+    
+    if(userAccountType == 'buyer') {
+      window.location.href="finishBuyerAccountCreation.html";
+    }
+    else {
+
+    }
+    return true;
+  }
+
+</script>
+
+</head>    
+<body onload="main()">    
+
+  <div class="toast" id="toast">
+    <div class="toast-body">
+    </div>
+  </div>
+
+    <form class="formContainer" onsubmit="return false;">  
+
+        <div class="container">
+            
+            <img class="logo" src="../creative/NDN Real Estate Logo.png" alt="Logo for NDN Real Estate"> 
+            <h1 class="header"> Create an account </h1> 
+
+
+            <label class="singleInputFieldLabel">Name: </label>
+            <div class="doubleInputFieldLabel">   
+                <input type="first" placeholder="Enter First Name" name="firstName" id="fname" value="">  <!-- add required keyword-->
+                <input type="last" placeholder="Enter Last Name" name="lastName" id="lname" value="">  <!-- add required keyword-->
+            </div>
+
+            <label class="singleInputFieldLabel">Username: </label>
+            <input type="username" placeholder="Enter Username" name="username" id="usrname" value="">  <!-- add required keyword-->
+
+            <div class="doubleInputFieldLabel">
+                <label class="inputFieldLabel">Password: </label>  
+                <label class="inputFieldLabel" type="phoneLabel" style="margin-left: 37%;">Confirm Password: </label> 
+            </div>
+            <div class="doubleInputFieldLabel">   
+                <input type="first" placeholder="Enter Password" name="pswd1" id="pswd1" value = "">  <!-- add required keyword-->
+                <input type="last" placeholder="Confirm Password" name="pswd2" id="pswd2" value = "">  <!-- add required keyword-->
+            </div>
+
+            <div class="doubleInputFieldLabel">
+                <label class="inputFieldLabel">Email: </label>  
+                <label class="inputFieldLabel" type="phoneLabel" style="margin-left: 43%;">Phone Number: </label> 
+            </div>
+        
+            <div class="doubleInputFieldLabel">   
+                <input type="first" placeholder="Enter Email" name="email" id="email" value = ""> <!-- add required keyword-->
+                <input type="last" placeholder="Enter Phone Number" name="phonenum" id="phonenum" value = ""> <!-- add required keyword-->
+            </div>
+
+            <div>
+                <label class="userDesignationLabel">Are you a: </label>
+
+                <div class="btn-group">
+                    <button class="buyer" name="buyer" onclick="userType(1)">Buyer</button> 
+                    <button class="agent" name="agent" onclick="userType(2)">Agent</button> 
+                </div>
+                 
+            </div>
+
+            <div class="submit">
+              <button class="submit" type="submit" value="Submit" onclick="return validateForm()">Next</button>  
+            </div>
+            
+            
+            
+            
+
+        </div>   
+
+    </form>   
+    
+  
+    
+</body>   
+
+
+
+
+  
+
+</html>

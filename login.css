@@ -81,18 +81,17 @@ input:focus {
 	font-size: 15px;
 }
 
-
-.container2 {   
-    padding: 5px;   
-    width: 31.5%;
-    height: 20%;
-    background-color: whitesmoke; 
-    /* box-shadow: 0 0 30px 2px #011743; */
-    border-radius: 5px;
-    border: 2px solid lightgray;
-    margin-left: auto;
-    margin-right: auto; 
+/* Horizontal line */
+hr {   
+    background-color: lightgray; 
+    margin-top: 5%;
 } 
+
+/* Create a new account link */
+.createAccount {
+    font-size: 12px;
+    margin-top: 5%;
+}
 
    
       

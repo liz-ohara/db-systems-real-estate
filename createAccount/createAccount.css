@@ -87,6 +87,7 @@ Body {
 }
 .doubleInputFieldLabel{
     display: flex;
+    font-size: 15px;
 }
 .emailAndPhone{
     display: flex;
@@ -144,8 +145,34 @@ input:focus {
 	font-size: 15px;
 }
 
-   
-      
+/* TOAST MESSAGES 
+Source: https://medium.com/codingthesmartway-com-blog/how-to-implement-a-toast-notification-with-html-css-and-javascript-36856a379ce0 */
+.toast {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: opacity 500ms, transform 500ms;
+}
+.toast.visible {
+    visibility: visible;
+    transform: translateY(0);
+    opacity: 1;
+}
+.toast.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+.toast-body {
+    margin: 28px;
+    padding: 15px 20px;
+    font-size: 14px;
+    background-color: whitesmoke;
+    color: black;
+    border-radius: 4px;
+    
+}  
 
 
 

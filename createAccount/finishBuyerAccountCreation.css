@@ -1,18 +1,63 @@
 Body {
 	font-family: Calibri, Helvetica, sans-serif;
-	background: url("residential_property.jpeg") rgba(0, 31, 91, 0.75);
+	background: url("../creative/residential_property.jpeg") rgba(0, 31, 91, 0.75);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-blend-mode: multiply;
 }  
 
-/* Logo */
+
+/* LOGO */
 .logo {
 	height:  60px;
     width: 140px;
 }
 
-/* Form and input containers */
+
+/* BUTTON GROUP TO CHOOSE BUYER/AGENT*/
+.btn-group button {
+    background-color: white; /* Green background */
+    
+    color: black; /* White text */
+    padding: 8px 12px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+    border-radius: 2px;
+    margin-right: 10px;
+    border: 2px solid lightgray; /* Green border */
+}
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.btn-group button:hover {
+    background-color: #011743;
+    color: whitesmoke;
+    border: 2px solid #011743; /* Green border */
+}
+.btn-group button:focus {
+    background-color: #001F5B;
+    color: whitesmoke;
+}
+
+
+/* SUBMIT BUTTON */
+.submit button{
+    background-color: #001F5B;   
+    color: whitesmoke;   
+    padding: 12px 16px;   
+    border: none;   
+    cursor: pointer;
+    display: flex;
+    margin-left: auto;
+}
+.submit button:hover {
+    background-color: #011743;   
+} 
+
+
+/* FORM AND INPUT CONTAINERS*/
 .formContainer {
 	width: 100%;
 }
@@ -28,41 +73,35 @@ Body {
     margin-bottom: 50px;
 }   
 
-/* Login button and hover */
-button {   
-	background-color: #001F5B;   
-    width: 30%; 
-    color: whitesmoke;   
-    padding: 15px;   
-    margin: 10px 0px;   
-    border: none;   
-    cursor: pointer;
-    margin-left: 70%;
-} 
-button:hover {
- 	background-color: #011743;   
-}  
+
+/* LABEL PROMPTING CHOICE BETWEEN BUYER / AGENT */
+.userDesignationLabel{
+    display: block;
+    padding-bottom: 10px;
+}
+
  
-/* First and last name input */
-.radio {
-    padding-right: 30px;
-}
-.radioButtons{
+/* INPUT FOR ALL FIELDS */
+.doubleInputFieldLabel{
     display: flex;
+    font-size: 15px;
 }
-.firstAndLast{
-    display: flex;
+select {
+    height: 30% !important;
+    margin-left: 20px !important;
+    margin-top: 8px;
+    background-color: whitesmoke;
+    border-width: 0 0 2px;
+    border-color: lightgray;
+    width: 50%; 
+    padding: 11px 10px;
+    box-sizing: border-box;
 }
-.emailAndPhone{
-    display: flex;
-}
-input[type=last] {   
+
+input[type=zipCode] {   
     margin-left: 20px !important;
 } 
-input[type=phone] {   
-    margin-left: 0px !important;
-} 
-input[type=first], input[type=last] {   
+input[type=city], input[type=county], input[type=zipCode] {   
 	width: 50%;   
     margin: 8px 0;  
     padding: 12px 20px;   
@@ -71,18 +110,8 @@ input[type=first], input[type=last] {
     border-width: 0 0 2px;
     border-color: lightgray;
 }  
-input[type=username], input[type=password] {   
+input[type=address] {   
 	width: 100%;   
-    margin: 8px 0;  
-    padding: 12px 20px;   
-    display: inline-block;   
-    box-sizing: border-box;   
-    background-color: whitesmoke;
-    border-width: 0 0 2px;
-    border-color: lightgray;
-}  
-input[type=email], input[type=phone] {   
-	width: 50%;   
     margin: 8px 0;  
     padding: 12px 20px;   
     display: inline-block;   
@@ -100,21 +129,12 @@ input:focus {
     border-color: #001F5B;
 }
 
-/* Forgot password link */
-.createProfessionalAccount {
-    padding: 0px;   
-    width:  100%;
-    background-color: white;
-    font-size: 14px;
-    color: #001F5B;
-}
 
-/* Text styling */
+/* GENERAL INPUT LABEL STYLING */
 .header {
 	font-size: 25px;
 }
-
-.inputFieldLabel {
+.singleInputFieldLabel {
 	font-size: 15px;
 }
 
