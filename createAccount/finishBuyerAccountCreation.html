@@ -7,9 +7,79 @@
 <style>   
 
 </style>   
+
+<script>
+    function showToast(message){
+        var toast = document.getElementById('toast');
+        toast.querySelector('.toast-body').innerHTML = message; 
+        toast.classList.add('visible');
+        setTimeout(function () {toast.classList.add('hidden');}, 4000);
+        toast.classList.remove('hidden');
+    }
+
+    function validateForm() {
+
+        var address1 = document.getElementById("address1").value;
+        var address2 = document.getElementById("address2").value;
+        var city = document.getElementById("city").value; 
+        var state = document.getElementById("state").value; 
+        var county = document.getElementById("county").value;
+        var zipCode = document.getElementById("zipCode").value;  
+            
+        if(address1 == "") {  
+            showToast("Please fill out the address field.");
+            return false;  
+        }  
+        if(city == "") {  
+            showToast("Please fill out the city field.");
+            return false;  
+        }  
+        if(state == "") {  
+            showToast("Please pick your state.");
+            return false;   
+        }  
+        if(county == "") {  
+            showToast("Please fill out the county field.");
+            return false;  
+        } 
+        var numbers = /[0-9]/g;
+        if(zipCode == "") {  
+            showToast("Please fill out the zip code field.");
+            return false;  
+        } 
+        if(isNaN(zipCode)){
+            showToast("Zip code should contain digits only.");
+            return false; 
+        }
+        if(zipCode.length < 5 || zipCode.length > 5){
+            showToast("Zip code should be 5 digits long.");
+            return false; 
+        }
+
+        console.log("Form is validated.");
+        // Pass variables from one file to another: https://www.youtube.com/watch?v=x0VcigW9kN0
+        // Stores all of the previous entered data
+        console.log(JSON.parse(localStorage.getItem(['userInfo'])));
+
+        localStorage.setItem(address1, address2, city, state, county, zipCode);
+        console.log(address1, address2, city, state, county, zipCode);
+
+        window.location.href="../mainDashboard/seeListings.html";
+
+        return true;
+    }
+
+</script>
+
 </head>    
 <body>    
-    <form class="formContainer">  
+
+    <div class="toast" id="toast">
+        <div class="toast-body">
+        </div>
+    </div>
+
+    <form class="formContainer" onsubmit="return false;">  
 
         <div class="container">
             
@@ -17,10 +87,10 @@
             <h1 class="header"> Finish account </h1> 
 
             <label class="singleInputFieldLabel">Address: </label>
-            <input type="address" placeholder="First line of address" name="address1" id="address1" value="" required>  <!-- add required keyword-->
+            <input type="address" placeholder="First line of address" name="address1" id="address1" value="">  <!-- add required keyword-->
 
             <label class="singleInputFieldLabel">Apartment, suite, etc. (optional): </label>
-            <input type="address" placeholder="Second line of address" name="address2" id="address2" value="" required>  <!-- add required keyword-->
+            <input type="address" placeholder="Second line of address" name="address2" id="address2" value="">  <!-- add required keyword-->
 
             
             <div class="doubleInputFieldLabel">
@@ -29,8 +99,8 @@
             </div>
         
             <div class="doubleInputFieldLabel">   
-                <input type="city" placeholder="Enter City" name="city" value = "" required> <!-- add required keyword-->
-                <select type="state" name="state" size="1" >
+                <input type="city" placeholder="Enter City" name="city" id="city" value = ""> <!-- add required keyword-->
+                <select type="state" name="state" id="state" size="1" >
                     <option value="AK">AK</option>
                     <option value="AL">AL</option>
                     <option value="AR">AR</option>
@@ -94,13 +164,13 @@
             </div>
         
             <div class="doubleInputFieldLabel">   
-                <input type="county" placeholder="Enter County" name="county" value = "" required> <!-- add required keyword-->
-                <input type="zipCode" placeholder="Enter Zip Code" name="zipCode" value = "" required> <!-- add required keyword-->
+                <input type="county" placeholder="Enter County" name="county" id="county" value = ""> <!-- add required keyword-->
+                <input type="zipCode" placeholder="Enter Zip Code" name="zipCode" id="zipCode" value = ""> <!-- add required keyword-->
             </div>
 
             
             <div class="submit">
-                <button class="submit" type="submit" value="Submit">Finish</button>  
+                <button class="submit" type="submit" value="Submit" onclick="return validateForm()">Finish</button>  
             </div> 
 
         </div>   

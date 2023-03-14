@@ -131,9 +131,9 @@
       return false; 
     }
 
-    console.log("Form is validated.")
-    localStorage.setItem(fname, lname, username, pw1, pw2, email, pnum);
-    console.log(fname, lname, username, pw1, pw2, email, pnum);
+    console.log("Form is validated.");
+    localStorage.setItem('userInfo', JSON.stringify([fname, lname, username, pw1, pw2, email, pnum]));
+    // console.log(fname, lname, username, pw1, pw2, email, pnum);
     
     if(userAccountType == 'buyer') {
       window.location.href="finishBuyerAccountCreation.html";
