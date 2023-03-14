@@ -1,0 +1,20 @@
+/* Dividing the page into three columns. */
+.column {
+    float: left;
+}
+
+.left /*, .right */ {
+    width: 20%;
+    background-color: lightgray;
+}
+  
+.middle {
+    width: 80%;
+    background-color: whitesmoke;
+}
+
+/* Adding space for a header. */
+.top{
+    width:100%;
+    background-color: whitesmoke;
+}
